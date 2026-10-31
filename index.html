@@ -460,123 +460,11 @@
       'use strict';
 
       /* ================================ GUEST LIST ================================
-         One guest per line, written exactly as it should appear on the invitation.
-         Remove a guest: delete their line.   Add a guest: add a line like this one:
-           'Uncle Tariq',
-         Keep the quotes and the comma. If a name has an apostrophe, write it as \'
-         Their link is the site address + ?to= + the name, for example:
-         https://theuppercaseguy.github.io/mahnoor-and-saad/?to=uncle-tariq
-         (capitals, spaces, dots and hyphens in the link don't matter).
+         The guest names are read from the file guests.txt (in the same folder as this page).
+         One name per line, written exactly as it should appear on the invitation.
+         A link only opens the envelope if the name after ?to= is on that list.
          ============================================================================ */
-      var GUESTS = [
-        // Groom's side
-        'Abdur Rehman',
-        'Nasreen',
-        'Uzma',
-        'Faizan',
-        'Waris',
-        'Umair',
-        'Abdul Wahab',
-        'Mrs. Abdul Wahab',
-        'Imran',
-        'Atif Shehzad',
-        'Asif Ali',
-        'Atif Malik',
-        'Khalid Gill',
-        'Ishaq Khan',
-        'Salahudin',
-        'Allahnur',
-        'Jamal',
-        'Mrs. Jamal',
-        'Sidra',
-        'Bareera',
-        'Sohail Ashraf',
-        'Tashfeen Gull',
-        'Zahid',
-        'Nimra Jamil',
-        'Noman',
-        'Mrs. Noman',
-        'Shaukat Ali',
-        'Mrs. Shaukat Ali',
-        'Muqadas Ali',
-        'Sami Ullah Kundi',
-        'Aamir Kundi',
-        'Nabeela Kundi',
-        'Jarrar Kundi',
-        'Ammar Kundi',
-        'Manahil Kundi',
-        'Abdul Khaliq Kundi',
-        'Waseem Kundi',
-        'Romana Kundi',
-        'Warda Kundi',
-        'Aaryan Kundi',
-        'Muhammad Kundi',
-        'Jabran Kundi',
-        'Faleeza Awan',
-        'Ammar Naeem',
-        'Mrs. Ammar Naeem',
-        'M. Saqlain',
-        'Muazam Ali',
-        'Farwa',
-        'Roshaan',
-        'Mrs. Roshaan',
-        'Afraaz',
-        'Hira',
-        'M. Sheraz',
-        'Obaid Afridi',
-        'Yousuf',
-        'M. Ghani',
-        'Asher',
-        'Bilal',
-        'Bobby',
-        'Rahim',
-        'Hassan Siddique',
-        'Zeeshan',
-        'Shaheer',
-        'Ahmed',
-        'Rao',
-        'Maheen',
-        'Musa',
-        'Zaeem',
-        'Usman',
-        // Bride's side
-        'Dado',
-        'Nano',
-        'Babar Naseem Khan',
-        'Nouman Khan',
-        'Amir Habib',
-        'Saleem Khattak',
-        'Aqeel Mughal & Family',
-        'Adil Hashmi & Family',
-        'Faisal Hashmi & Family',
-        'Dr. Liaquat Ullah Iqbal & Family',
-        'Mr. & Mrs. Umer Khan',
-        'Aimen Khan',
-        'Khadija Khan',
-        'Mr. & Mrs. Syed Turab Shah',
-        'Sajjad Hashmi & Family',
-        'Wahab Hashmi & Family',
-        'Mr. & Mrs. Abdul Nasir Khan',
-        'Umair Abbas',
-        'Yasmeen Saleem',
-        'Bilal Malik',
-        'Ahmed Bin Fakhar',
-        'Iqra',
-        'Hafsa Anis',
-        'Ammara',
-        'Laraib Ansar',
-        'Fatima Chaudhry',
-        'Hajira Malik',
-        'Hira Moubin',
-        'Aiman Jamil',
-        'Saliha',
-        'Alishba Javed',
-        'Huma Akmal',
-        'Atrooba Fakhar',
-        'Munizza Mehreen',
-        'Umber',
-        'Talha Hashmi',
-      ];
+      var GUESTS = [];
 
       var doc = document;
       var win = window;
@@ -890,24 +778,56 @@
         }
       });
 
+      // Guest list: read from guests.txt, one name per line (blank lines and lines starting with # are ignored)
+      function parseGuests(text) {
+        var lines = String(text).replace(/^\uFEFF/, '').split(/\r\n|\r|\n/);
+        var list = [];
+        for (var i = 0; i < lines.length; i++) {
+          var line = lines[i].replace(/^\s+|\s+$/g, '');
+          if (line && line.charAt(0) !== '#') { list.push(line); }
+        }
+        return list;
+      }
+      function loadGuests(done, failed) {
+        var request = new XMLHttpRequest();
+        request.open('GET', 'guests.txt?v=' + new Date().getTime(), true); // the ?v= makes sure an updated list is never read from an old copy
+        request.onreadystatechange = function () {
+          if (request.readyState !== 4) { return; }
+          if (request.status === 200 || (request.status === 0 && request.responseText)) { done(parseGuests(request.responseText)); }
+          else { failed(); }
+        };
+        try { request.send(); } catch (e) { failed(); }
+      }
+
       // Start: size the scene, personalise, unlock the seal
       fit();
       win.addEventListener('resize', fit);
       if (doc.hidden) { root.classList.add('is-hidden'); }
 
-      var guest = readGuest();
-      if (guest) {
-        root.classList.add('has-guest');
-        if (guest.length > 18) { root.classList.add('is-long'); }
-        if (guest.length > 28) { root.classList.add('is-very-long'); }
-        var slots = doc.querySelectorAll('[data-guest]');
-        for (var s = 0; s < slots.length; s++) { slots[s].textContent = guest; }
-        doc.title = 'Mahnoor & Saad · An invitation for ' + guest;
-        enableSeal();
-        scheduleAutoOpen(AUTO_OPEN_MS);
-      } else if (win.location.search) {
-        // Not on the list: go back to the plain site address, where the envelope stays sealed
-        try { win.history.replaceState(null, '', win.location.pathname); } catch (e) { /* keep the URL */ }
+      // Until the list has been read (or if it can't be read) the envelope stays sealed
+      var waitingHint = doc.querySelector('.gate__hint--personal');
+      function showWaitingHint() { if (waitingHint) { waitingHint.style.visibility = ''; } }
+      function start(list) {
+        showWaitingHint();
+        GUESTS = list;
+        var guest = readGuest();
+        if (guest) {
+          root.classList.add('has-guest');
+          if (guest.length > 18) { root.classList.add('is-long'); }
+          if (guest.length > 28) { root.classList.add('is-very-long'); }
+          var slots = doc.querySelectorAll('[data-guest]');
+          for (var s = 0; s < slots.length; s++) { slots[s].textContent = guest; }
+          doc.title = 'Mahnoor & Saad · An invitation for ' + guest;
+          enableSeal();
+          scheduleAutoOpen(AUTO_OPEN_MS);
+        } else {
+          // Not on the list: go back to the plain site address, where the envelope stays sealed
+          try { win.history.replaceState(null, '', win.location.pathname); } catch (e) { /* keep the URL */ }
+        }
+      }
+      if (win.location.search) {
+        if (waitingHint) { waitingHint.style.visibility = 'hidden'; } // no flash of the "use your link" note while the list loads
+        loadGuests(start, showWaitingHint);
       }
     }());
   </script>

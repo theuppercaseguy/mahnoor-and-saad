@@ -1,0 +1,115 @@
+# GUEST LIST: one name per line, written exactly as it should appear on the invitation.
+# Add a guest: add a new line.   Remove a guest: delete their line.
+# Blank lines and lines starting with # are ignored (use them for notes).
+# A guest's link is the site address + ?to= + the name, for example:
+#   https://theuppercaseguy.github.io/mahnoor-and-saad/?to=Abdur+Rehman
+# (capitals, spaces, dots and hyphens in the link don't matter, but the name must be on this list).
+
+# Groom's side
+Abdur Rehman
+Nasreen
+Uzma
+Faizan
+Waris
+Umair
+Abdul Wahab
+Mrs. Abdul Wahab
+Imran
+Atif Shehzad
+Asif Ali
+Atif Malik
+Khalid Gill
+Ishaq Khan
+Salahudin
+Allahnur
+Jamal
+Mrs. Jamal
+Sidra
+Bareera
+Sohail Ashraf
+Tashfeen Gull
+Zahid
+Nimra Jamil
+Noman
+Mrs. Noman
+Shaukat Ali
+Mrs. Shaukat Ali
+Muqadas Ali
+Sami Ullah Kundi
+Aamir Kundi
+Nabeela Kundi
+Jarrar Kundi
+Ammar Kundi
+Manahil Kundi
+Abdul Khaliq Kundi
+Waseem Kundi
+Romana Kundi
+Warda Kundi
+Aaryan Kundi
+Muhammad Kundi
+Jabran Kundi
+Faleeza Awan
+Ammar Naeem
+Mrs. Ammar Naeem
+M. Saqlain
+Muazam Ali
+Farwa
+Roshaan
+Mrs. Roshaan
+Afraaz
+Hira
+M. Sheraz
+Obaid Afridi
+Yousuf
+M. Ghani
+Asher
+Bilal
+Bobby
+Rahim
+Hassan Siddique
+Zeeshan
+Shaheer
+Ahmed
+Rao
+Maheen
+Musa
+Zaeem
+Usman
+
+# Bride's side
+Dado
+Nano
+Babar Naseem Khan
+Nouman Khan
+Amir Habib
+Saleem Khattak
+Aqeel Mughal & Family
+Adil Hashmi & Family
+Faisal Hashmi & Family
+Dr. Liaquat Ullah Iqbal & Family
+Mr. & Mrs. Umer Khan
+Aimen Khan
+Khadija Khan
+Mr. & Mrs. Syed Turab Shah
+Sajjad Hashmi & Family
+Wahab Hashmi & Family
+Mr. & Mrs. Abdul Nasir Khan
+Umair Abbas
+Yasmeen Saleem
+Bilal Malik
+Ahmed Bin Fakhar
+Iqra
+Hafsa Anis
+Ammara
+Laraib Ansar
+Fatima Chaudhry
+Hajira Malik
+Hira Moubin
+Aiman Jamil
+Saliha
+Alishba Javed
+Huma Akmal
+Atrooba Fakhar
+Munizza Mehreen
+Umber
+Talha Hashmi
