@@ -56,8 +56,7 @@
   <div class="veil"></div>
   <div class="mist"></div>
   <div class="rain">
-    <div class="rain__far"></div>
-    <div class="rain__near"></div>
+    <div class="rain__drops"></div>
   </div>
 </div>
 
@@ -146,7 +145,6 @@
     </div>
     <div class="d4">
       <div class="rule rule--sep" aria-hidden="true"></div>
-      <p class="welcome__ur" lang="ur" dir="rtl">آپ کی تشریف آوری ہمارے لیے باعثِ مسرت ہوگی</p>
       <p class="welcome__en">Your gracious presence will be a source of joy for us.</p>
     </div>
   </section>
@@ -257,11 +255,40 @@
     <div class="attire">
       <div class="attire__col d2">
         <h3 class="kicker label">Ladies</h3>
-        <svg class="figure" viewBox="0 0 64 112" width="64" height="112" aria-hidden="true" focusable="false">
-          <g stroke="#0F1F19" stroke-opacity=".2" stroke-width="1" stroke-linejoin="round">
-            <path fill="#B76E79" d="M25 29Q32 32.5 39 29L41.5 33Q42.5 40 42 46C48 60 54 80 58 101Q32 109 6 101C10 80 16 60 22 46Q21.5 40 22.5 33Z"/>
-            <circle fill="#F1EADB" cx="32" cy="16" r="9"/>
-            <path fill="#EBC9C3" d="M17 50C14.5 30 20 4 32 4S49.5 30 47 50L43.5 49C44 34 41.5 9.5 32 9.5S20 34 20.5 49Z"/>
+        <svg class="figure" viewBox="0 0 100 160" width="96" height="154" aria-hidden="true" focusable="false">
+          <g stroke="#0F1F19" stroke-opacity=".35" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+            <path vector-effect="non-scaling-stroke" fill="#EBC9C3" d="M28.6 68C26.6 60 26.4 50 27.4 42H72.6C73.6 50 73.4 60 71.4 68Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#2E2220" d="M27.6 58.6C27.4 56.2 26 49.4 26.2 44C26.4 38.6 26.5 31.2 28.6 26C30.7 20.8 35 15.6 38.6 13C42.2 10.4 46.2 10.4 50 10.4C53.8 10.4 57.8 10.4 61.4 13C65 15.6 69.3 20.8 71.4 26C73.5 31.2 73.6 38.6 73.8 44C74 49.4 72.6 56.2 72.4 58.6C72 60.6 70.6 61.8 69 61.6C66.8 61.2 65.2 59.4 64.4 57.6L62 50.6H38L35.6 57.6C34.8 59.4 33.2 61.2 31 61.6C29.4 61.8 28 60.6 27.6 58.6Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M46.4 50C46.8 54 46.8 58 46.4 62H53.6C53.2 58 53.2 54 53.6 50Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M50 22.5C44.6 23.4 37.8 27.4 34.8 34.2C33 33.8 31.8 34.6 31.4 36.4C31 38.2 31 40 31.5 42C33 49.5 41 55 50 55C59 55 67 49.5 68.5 42C69 40 69 38.2 68.6 36.4C68.2 34.6 67 33.8 65.2 34.2C62.2 27.4 55.4 23.4 50 22.5Z"/>
+            <path vector-effect="non-scaling-stroke" fill="none" d="M50 22.5C49.8 19 49.8 15.6 50 12.4"/>
+            <path vector-effect="non-scaling-stroke" fill="#B39A64" d="M41.2 148.5C41 151.2 42.4 154 44.2 154.6C46 154 47.4 151.2 47.2 148.5ZM52.8 148.5C52.6 151.2 54 154 55.8 154.6C57.6 154 59 151.2 58.8 148.5Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#B76E79" d="M39 85C34.5 101 20 127 8 146C30 152.5 70 152.5 92 146C80 127 65.5 101 61 85Z"/>
+            <path vector-effect="non-scaling-stroke" fill="none" stroke="#B39A64" stroke-opacity="1" stroke-width="2" d="M11.15 142.6C31.5 149.1 68.5 149.1 88.85 142.6"/>
+            <path vector-effect="non-scaling-stroke" fill="#B76E79" d="M44 59.5C46 62.6 54 62.6 56 59.5C60.5 59.6 64 60.6 65.6 63C66.3 70 63.5 79 61.2 86.5C54 88.2 46 88.2 38.8 86.5C36.5 79 33.7 70 34.4 63C36 60.6 39.5 59.6 44 59.5Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M62.6 85.6C59.6 87.4 56.4 88.4 53.5 88.4L53.2 83.6C55.8 83.4 58 82.4 60.1 80.9Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#B76E79" d="M64.5 60.8C68 62 69.6 66.5 69.8 72C69.9 75.5 69.7 78.2 68.8 80.2C67.4 83.2 64.8 85.2 62 86L59.8 81C61.4 79.6 62.3 77 62.4 74C62.5 70 62.4 64.6 64.5 60.8Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC9C3" d="M33 76C31.9 74.8 28.5 71.6 26.6 68.6C24.7 65.6 22.8 62.1 21.8 58C20.8 53.9 20.2 49.3 20.5 44C20.8 38.7 21.2 31.5 23.4 26C25.7 20.5 29.6 14.5 34 11.2C38.4 7.9 44.7 6.4 50 6.4C55.3 6.4 61.6 7.9 66 11.2C70.4 14.5 74.4 20.5 76.6 26C78.9 31.5 79 38.7 79.5 44C80 49.3 79.8 52.7 79.6 58C79.4 63.3 79 70 78.6 76C78.2 82 77.3 91 77 94C72.2 96 67.2 96.9 62.6 96.6C62.7 94.5 62.8 88.2 63.3 84C63.8 79.8 64.5 75.1 65.8 71.2C67.1 67.3 69.7 64.6 71 60.6C72.3 56.6 73.2 52.1 73.4 47C73.6 41.9 73.8 35.2 72.2 30C70.6 24.8 67.3 18.6 63.6 15.6C59.9 12.6 54.5 11.8 50 11.8C45.5 11.8 40.1 12.6 36.4 15.6C32.7 18.6 29.4 24.8 27.8 30C26.2 35.2 26.5 42 26.6 47C26.7 52 27.6 56.7 28.4 60C29.2 63.3 30.3 64.6 31.6 66.6C32.9 68.6 35.4 71.1 36.2 72Z"/>
+            <path vector-effect="non-scaling-stroke" fill="none" stroke="#B39A64" stroke-opacity="1" stroke-width="1" d="M75.5 92.7C71.3 94.6 67.6 95.2 64.2 95C64.3 93.2 64.3 88.1 64.8 84.2C65.3 80.3 66 75.5 67.2 71.7C68.5 67.8 71.2 65.2 72.4 61C73.7 56.9 74.7 52.3 74.9 47.1C75.1 41.8 75.4 35 73.6 29.6C71.9 24.1 68.5 17.6 64.6 14.4C60.6 11.2 54.9 10.3 50 10.3C45.1 10.3 39.4 11.2 35.4 14.4C31.5 17.6 28.1 24.1 26.4 29.6C24.6 35 25 41.9 25.1 47C25.2 52.2 26.1 57 26.9 60.4C27.8 63.8 29 65.3 30.3 67.4C31.7 69.5 34.3 72 35.1 73"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M37.4 85.6C40.4 87.4 43.6 88.4 46.5 88.4L46.8 83.6C44.2 83.4 42 82.4 39.9 80.9Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#B76E79" d="M35.5 60.8C32 62 30.4 66.5 30.2 72C30.1 75.5 30.3 78.2 31.2 80.2C32.6 83.2 35.2 85.2 38 86L40.2 81C38.6 79.6 37.7 77 37.6 74C37.5 70 37.6 64.6 35.5 60.8Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M45 84.6C46.4 82.8 53.6 82.8 55 84.6C56.4 86.6 54.6 89.4 50 89.4C45.4 89.4 43.6 86.6 45 84.6Z"/>
+            <path vector-effect="non-scaling-stroke" fill="none" d="M48.4 83.5C50.2 84.6 50.6 87.6 49 89.3"/>
+          </g>
+          <g fill="#B39A64">
+            <circle cx="47.3" cy="68.4" r="1"/>
+            <circle cx="52.7" cy="68.4" r="1"/>
+            <circle cx="50" cy="72.6" r="1"/>
+            <circle cx="31.6" cy="48.4" r="1.5"/>
+            <circle cx="68.4" cy="48.4" r="1.5"/>
+          </g>
+          <g fill="#E8A0A0" fill-opacity=".45">
+            <ellipse cx="38.4" cy="44.6" rx="3.6" ry="2.2"/>
+            <ellipse cx="61.6" cy="44.6" rx="3.6" ry="2.2"/>
+          </g>
+          <g fill="none" stroke="#2E2220" stroke-linecap="round" stroke-linejoin="round">
+            <path vector-effect="non-scaling-stroke" stroke-width="1.5" d="M39.6 39C40.6 41.1 43.9 41.1 44.9 39M55.1 39C56.1 41.1 59.4 41.1 60.4 39"/>
+            <path vector-effect="non-scaling-stroke" stroke-width="1.25" d="M47.7 45.6C48.9 47 51.1 47 52.3 45.6"/>
           </g>
         </svg>
         <p class="attire__line">Pastel shades, rose gold preferred</p>
@@ -271,15 +298,36 @@
       </div>
       <div class="attire__col d3">
         <h3 class="kicker label">Gentlemen</h3>
-        <svg class="figure" viewBox="0 0 64 112" width="64" height="112" aria-hidden="true" focusable="false">
-          <g stroke="#0F1F19" stroke-opacity=".2" stroke-width="1" stroke-linejoin="round">
-            <path fill="#EFE4CC" d="M21.5 82H31.5L30.5 109H23.5ZM32.5 82H42.5L40.5 109H33.5Z"/>
-            <path fill="#EFE4CC" d="M26 25L19 28L13.5 65H19L21 45L19 86H45L43 45L45 65H50.5L45 28L38 25Z"/>
-            <path fill="#4B3226" d="M27 25.5L32 43L37 25.5L43.5 28.5L44.5 62H19.5L20.5 28.5Z"/>
-            <circle fill="#F1EADB" cx="32" cy="14" r="9"/>
+        <svg class="figure" viewBox="0 0 100 160" width="96" height="154" aria-hidden="true" focusable="false">
+          <g stroke="#0F1F19" stroke-opacity=".35" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+            <path vector-effect="non-scaling-stroke" fill="#1C1A19" d="M39.6 147.2C41 146.2 46.8 146.2 48.2 147.2C49.4 148.2 49.6 150.4 49.4 152C49.2 153.4 46.6 154 43.9 154C41.2 154 38.6 153.4 38.4 152C38.2 150.4 38.4 148.2 39.6 147.2ZM60.4 147.2C59 146.2 53.2 146.2 51.8 147.2C50.6 148.2 50.4 150.4 50.6 152C50.8 153.4 53.4 154 56.1 154C58.8 154 61.4 153.4 61.6 152C61.8 150.4 61.6 148.2 60.4 147.2Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EFE4CC" d="M36.2 123C34.6 130.8 36.4 139.6 40.2 146.2C42.6 147.4 45.4 147.4 47.8 146.2C49.2 139.6 50 131 50 123ZM63.8 123C65.4 130.8 63.6 139.6 59.8 146.2C57.4 147.4 54.6 147.4 52.2 146.2C50.8 139.6 50 131 50 123Z"/>
+            <path vector-effect="non-scaling-stroke" fill="none" d="M40.6 144C42.8 145.1 45.4 145.1 47.6 144M59.4 144C57.2 145.1 54.6 145.1 52.4 144"/>
+            <path vector-effect="non-scaling-stroke" fill="#EFE4CC" d="M35.6 60C42 58.6 58 58.6 64.4 60C65.8 80 67.4 102 69 125.6C56.2 127.6 43.8 127.6 31 125.6C32.6 102 34.2 80 35.6 60Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M45.9 50C46.3 53.4 46.3 56 45.9 59H54.1C53.7 56 53.7 53.4 54.1 50Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EFE4CC" d="M44.6 55.6C47.4 56.8 52.6 56.8 55.4 55.6L55.6 59C52.8 60.2 47.2 60.2 44.4 59Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#4B3226" d="M45 57.6C40.4 58 34.6 59.2 31.8 61.6C31 68 34.4 78 34.8 86C35 92 33.4 98.6 33 104.6C37.6 106 43 106.2 47.8 105.4L48.4 88C47.2 78 46 67 45 57.6ZM55 57.6C59.6 58 65.4 59.2 68.2 61.6C69 68 65.6 78 65.2 86C65 92 66.6 98.6 67 104.6C62.4 106 57 106.2 52.2 105.4L51.6 88C52.8 78 54 67 55 57.6Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#4B3226" d="M45 57.6L41 60.4L42.6 62.4L39.6 64C41.6 71.5 45 80.5 48.4 88C47.2 78 46 67 45 57.6ZM55 57.6L59 60.4L57.4 62.4L60.4 64C58.4 71.5 55 80.5 51.6 88C52.8 78 54 67 55 57.6Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#4B3226" d="M31.2 61.4C28 62.6 26.4 66.4 26.1 72C25.8 81 26.6 92 27.4 101.6C29.6 102.8 32.4 102.8 34.4 101.6C34.6 93 35 83 35.6 74.4C35.9 69.6 34.8 64 31.2 61.4ZM68.8 61.4C72 62.6 73.6 66.4 73.9 72C74.2 81 73.4 92 72.6 101.6C70.4 102.8 67.6 102.8 65.6 101.6C65.4 93 65 83 64.4 74.4C64.1 69.6 65.2 64 68.8 61.4Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M27.8 102.6C27.2 106 28.6 109 30.9 109C33.2 109 34.4 106 33.8 102.6ZM72.2 102.6C72.8 106 71.4 109 69.1 109C66.8 109 65.6 106 66.2 102.6Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M32.2 36.5C28.8 35.4 27.4 38.8 28.4 41.8C29.2 44 31 44.8 32.8 44ZM67.8 36.5C71.2 35.4 72.6 38.8 71.6 41.8C70.8 44 69 44.8 67.2 44Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#EBC8A8" d="M50 55C41 55 33 49.5 31.5 42C30.6 37.5 30.8 33 32 29C34.6 21.6 41.6 18 50 18C58.4 18 65.4 21.6 68 29C69.2 33 69.4 37.5 68.5 42C67 49.5 59 55 50 55Z"/>
+            <path vector-effect="non-scaling-stroke" fill="#2E2220" d="M31.9 36.4C31.7 35.2 30.4 32.1 30.4 29.4C30.5 26.7 30.7 23.1 32.2 20.2C33.7 17.3 36.3 14 39.2 12C42.1 10 46 8.6 49.6 8.2C53.2 7.8 57.9 8.1 61 9.4C64.1 10.7 66.5 13.1 68 15.8C69.5 18.5 69.7 22.1 69.8 25.4C69.9 28.7 68.6 33.9 68.4 35.6L66.8 33.8C66.6 33.1 66.7 30.1 65.8 29.4C64.9 28.7 63.2 29.7 61.2 29.4C59.2 29.1 56.3 28.6 54 27.8C51.7 27 49.5 25.6 47.4 24.6C45.3 23.6 43.4 22 41.6 22C39.8 22 38 23.5 36.8 24.8C35.6 26.1 34.8 28.3 34.2 30C33.6 31.7 33.5 34 33.4 34.8Z"/>
+          </g>
+          <g fill="#B39A64">
+            <circle cx="46.3" cy="92.6" r="1.1"/>
+            <circle cx="46.1" cy="99" r="1.1"/>
+          </g>
+          <g fill="#E8A0A0" fill-opacity=".45">
+            <ellipse cx="38.4" cy="44.6" rx="3.6" ry="2.2"/>
+            <ellipse cx="61.6" cy="44.6" rx="3.6" ry="2.2"/>
+          </g>
+          <g fill="none" stroke="#2E2220" stroke-linecap="round" stroke-linejoin="round">
+            <path vector-effect="non-scaling-stroke" stroke-width="1.5" d="M39.6 39C40.6 41.1 43.9 41.1 44.9 39M55.1 39C56.1 41.1 59.4 41.1 60.4 39"/>
+            <path vector-effect="non-scaling-stroke" stroke-width="1.25" d="M47.7 45.6C48.9 47 51.1 47 52.3 45.6"/>
           </g>
         </svg>
-        <p class="attire__line">Cream shalwar kameez with a chocolate or black coat or waistcoat</p>
+        <p class="attire__line">Cream shalwar kameez with a chocolate or black coat</p>
         <ul class="swatches">
           <li class="swatch"><span class="swatch__dot sw-cream"></span><span class="swatch__name">Cream</span></li><li class="swatch"><span class="swatch__dot sw-chocolate"></span><span class="swatch__name">Chocolate</span></li><li class="swatch"><span class="swatch__dot sw-black"></span><span class="swatch__name">Black</span></li>
         </ul>
@@ -290,26 +338,10 @@
   <section class="folio folio--night reveal" aria-labelledby="folio-5">
     <div class="d1">
       <div class="rule" aria-hidden="true"></div>
-      <h2 class="kicker folio__kicker" id="folio-5">V · Little Touches</h2>
+      <h2 class="kicker folio__kicker" id="folio-5">V · For Our Guests</h2>
     </div>
     <div class="touches">
       <div class="touch d2">
-        <svg class="touch__icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <use xlink:href="#jasmine" transform="translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(45 20 20) translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(90 20 20) translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(135 20 20) translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(180 20 20) translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(225 20 20) translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(270 20 20) translate(20 8.5) scale(.82)"/>
-            <use xlink:href="#jasmine" transform="rotate(315 20 20) translate(20 8.5) scale(.82)"/>
-          </g>
-        </svg>
-        <h3 class="touch__title">Gajras for the Ladies</h3>
-        <p class="touch__line">Fresh gajras will be waiting for the ladies on arrival.</p>
-      </div>
-      <div class="touch d3">
         <svg class="touch__icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12.5 34.5V18.5a7.5 7.5 0 0 1 15 0V34.5Z"/>
@@ -321,20 +353,7 @@
         <h3 class="touch__title">The Photobooth</h3>
         <p class="touch__line">Strike a pose at our photobooth and take a memory home.</p>
       </div>
-      <div class="touch d4">
-        <svg class="touch__icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
-          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M15.5 16.5C13.5 14.5 17.5 12 15.5 9.5S15.5 5 17 4"/>
-            <path d="M22.5 16.5C20.5 14.5 24.5 12 22.5 9.5S22.5 5 24 4"/>
-            <path d="M8.5 20.5H29.5C29.5 26.5 25 30.5 19 30.5S8.5 26.5 8.5 20.5Z"/>
-            <path d="M29 22.5C33.5 21.5 34.5 27 28 27.5"/>
-            <path d="M6 34C12 35.6 26 35.6 32 34"/>
-          </g>
-        </svg>
-        <h3 class="touch__title">Pink Tea</h3>
-        <p class="touch__line">Cups of steaming Kashmiri pink tea to keep you warm as the evening cools.</p>
-      </div>
-      <div class="touch d4">
+      <div class="touch d3">
         <svg class="touch__icon" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
           <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 25.5A5 5 0 0 1 12.5 15.6A7.5 7.5 0 0 1 26.8 14.2A5.7 5.7 0 0 1 28 25.5Z"/>
@@ -347,29 +366,37 @@
     </div>
   </section>
 
-  <!-- REPLACE: put the real phone number in all three places -->
+  <!-- REPLACE: groom's number in 3 places and bride's number in 3 places -->
   <section class="assist land reveal" aria-labelledby="assist-label">
     <h2 class="kicker assist__label d1" id="assist-label">For directions or assistance</h2>
-    <p class="assist__number d2">+92 300 1234567</p>
-    <p class="assist__actions d3">
-      <a class="btn" href="tel:+923001234567">Call</a>
-      <a class="btn" href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a>
-    </p>
-  </section>
-
-  <section class="closing land reveal" aria-labelledby="closing-families">
-    <p class="closing__ur d1" lang="ur" dir="rtl">طالبِ دعا</p>
-    <p class="closing__seek d2">Seeking your prayers,</p>
-    <p class="closing__families d2" id="closing-families">The Shahzad &amp; <span class="nw">Rafiullah Families</span></p>
-    <div class="garland garland--closing d3" aria-hidden="true">
-      <svg class="bough bough--mirror" viewBox="0 0 120 42" focusable="false"><use xlink:href="#bough"/></svg><span class="closing__mono monogram" lang="ar" dir="rtl">م س</span><svg class="bough" viewBox="0 0 120 42" focusable="false"><use xlink:href="#bough"/></svg>
+    <div class="assist__pair">
+      <div class="assist__contact d2">
+        <h3 class="kicker assist__family">Groom’s Family</h3>
+        <p class="assist__number">+92 300 1234567</p>
+        <p class="assist__actions">
+          <a class="btn" href="tel:+923001234567">Call</a>
+          <a class="btn" href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a>
+        </p>
+      </div>
+      <div class="assist__contact d3">
+        <h3 class="kicker assist__family">Bride’s Family</h3>
+        <p class="assist__number">+92 300 7654321</p>
+        <p class="assist__actions">
+          <a class="btn" href="tel:+923007654321">Call</a>
+          <a class="btn" href="https://wa.me/923007654321" target="_blank" rel="noopener">WhatsApp</a>
+        </p>
+      </div>
     </div>
   </section>
 
 </main>
 
 <footer class="credits" id="credits" hidden>
-  <p>Landscape photographs from Wikimedia Commons by Forbes Johnston (CC BY 4.0), Esareth (CC BY-SA 3.0), Saadbintariq89 (CC BY-SA 3.0) and SyedArslan (CC BY-SA 4.0). Venue photographs courtesy of Mariano Restaurant &amp; Spa.</p>
+  <p>We look forward to sharing this blessed day with you. Please keep Mahnoor and Saad in your prayers as they begin this new chapter together. May Allah bless their union with love and mercy. Ameen.
+
+With love and gratitude,
+
+The Shahzad & Rafiullah Families</p>
 </footer>
 
 <button class="music" id="music-btn" type="button" aria-label="Play music" hidden>
@@ -380,6 +407,96 @@
 <script>
 (function () {
   'use strict';
+
+  /* ================================ GUEST LIST ================================
+     One guest per line, written exactly as it should appear on the invitation.
+     Remove a guest: delete their line.   Add a guest: add a line like this one:
+       'Uncle Tariq',
+     Keep the quotes and the comma. If a name has an apostrophe, write it as \'
+     Their link is the site address + ?to= + the name, for example:
+     https://theuppercaseguy.github.io/mahnoor-and-saad/?to=uncle-tariq
+     (capitals, spaces, dots and hyphens in the link don't matter).
+     ============================================================================ */
+  var GUESTS = [
+    'Abdur Rehman',
+    'Chachi',
+    'Uzma',
+    'Faizan',
+    'Waris',
+    'Umair',
+    'Abdul Wahab',
+    'Imran',
+    'Inam',
+    'Karishma',
+    'Atif Shehzad',
+    'Asif Ali',
+    'Atif Malik',
+    'Khalid Gill',
+    'Ishaq Khan',
+    'Salahudin',
+    'Allahnur',
+    'Jamal',
+    'Mrs. Jamal',
+    'Sidra',
+    'Bareera',
+    'Sohail Ashraf',
+    'Tashfeen Gull',
+    'Zahid',
+    'Nimra Jamil',
+    'Noman',
+    'Mrs. Noman',
+    'Shaukat Ali',
+    'Mrs. Shaukat Ali',
+    'Muqadas Ali',
+    'Sami Ullah Kundi',
+    'Aamir Mamu',
+    'Nabeela Mami',
+    'Jarrar',
+    'Ammar',
+    'Manahil',
+    'Nanu',
+    'Romana Mami',
+    'Warda',
+    'Aaryan',
+    'Muhammad',
+    'Dad',
+    'Mum',
+    'Ayesha',
+    'Rida',
+    'Saad',
+    'Ammad',
+    'Muazam Ali',
+    'Farwa',
+    'Roshaan',
+    'Mrs. Roshaan',
+    'Afraaz',
+    'Hira',
+    'Sheraz',
+    'Yousuf',
+    'Ghani',
+    'Saim',
+    'Asher',
+    'Bilal',
+    'Bobby',
+    'Rahim',
+    'Hassan Siddique',
+    'Zeeshan',
+    'Shaheer',
+    'Ahmed',
+    'Rao',
+    'Maheen',
+    'Musa',
+    'Zaeem',
+    'Usman',
+    'Fatima',
+    'Laraib',
+    'Hafsa',
+    'Aiman',
+    'Saliha',
+    'Alishba',
+    'Amber',
+    'Hajra',
+  ];
 
   var doc = document;
   var win = window;
@@ -419,17 +536,22 @@
   loadFont('Noto+Nastaliq+Urdu', textOf('[lang="ur"]'));
   loadFont('Aref+Ruqaa:wght@700', textOf('.monogram'));
 
-  // Guest name from ?to=, parsed by hand
+  // Guest lookup: the name in ?to= must match a name on GUESTS; the name shown always comes from GUESTS
+  function guestKey(text) {
+    return String(text).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]/g, '');
+  }
   function readGuest() {
     var pairs = win.location.search.replace(/^\?/, '').split('&');
     for (var i = 0; i < pairs.length; i++) {
       var eq = pairs[i].indexOf('=');
-      var key = eq < 0 ? pairs[i] : pairs[i].slice(0, eq);
-      if (key !== 'to') { continue; }
+      if ((eq < 0 ? pairs[i] : pairs[i].slice(0, eq)) !== 'to') { continue; }
       var value = eq < 0 ? '' : pairs[i].slice(eq + 1).replace(/\+/g, ' ');
       try { value = decodeURIComponent(value); } catch (e) { /* keep the raw value */ }
-      value = value.replace(/[<>"]/g, '').replace(/\s+/g, ' ').replace(/^\s+|\s+$/g, '');
-      return value.slice(0, 60).replace(/\s+$/, '');
+      var key = guestKey(value);
+      for (var j = 0; key && j < GUESTS.length; j++) {
+        if (guestKey(GUESTS[j]) === key) { return GUESTS[j]; }
+      }
+      return '';
     }
     return '';
   }
@@ -538,7 +660,7 @@
   function startReveals() {
     var items = doc.querySelectorAll('.reveal');
     var i;
-    if (!('IntersectionObserver' in win)) {
+    if (typeof win.IntersectionObserver !== 'function') {
       for (i = 0; i < items.length; i++) { items[i].classList.add('is-in'); }
       return;
     }
@@ -582,9 +704,9 @@
       return;
     }
     gate.classList.add('is-opening');
-    setTimeout(function () { gate.classList.add('is-flap-back'); }, 770);
-    setTimeout(reveal, 1600);
-    setTimeout(finishOpening, 2600);
+    setTimeout(function () { gate.classList.add('is-flap-back'); }, 950);
+    setTimeout(reveal, 3100);
+    setTimeout(finishOpening, 4100);
   }
   function enableSeal() {
     var button = doc.createElement('button');
@@ -628,6 +750,9 @@
     for (var s = 0; s < slots.length; s++) { slots[s].textContent = guest; }
     doc.title = 'Mahnoor & Saad · An invitation for ' + guest;
     enableSeal();
+  } else if (win.location.search) {
+    // Not on the list: go back to the plain site address, where the envelope stays sealed
+    try { win.history.replaceState(null, '', win.location.pathname); } catch (e) { /* keep the URL */ }
   }
 }());
 </script>
