@@ -847,6 +847,17 @@
         autoTime = null;
         autoRaf = win.requestAnimationFrame(autoStep);
       }
+        // After an automatic open, browsers only allow sound following a touch, so start the music on the guest's first tap, click or key press
+      function armMusicOnFirstTap() {
+        var evs = ['click', 'touchend', 'keydown'];
+        function go(e) {
+          var t = e && e.target;
+          for (var i = 0; i < evs.length; i++) { win.removeEventListener(evs[i], go, true); }
+          if (t && t.closest && t.closest('#music-btn')) { return; } // the music button handles itself
+          if (audio.paused) { playMusic(); }
+        }
+        for (var i = 0; i < evs.length; i++) { win.addEventListener(evs[i], go, true); }
+      }
       function autoOpen() {
         if (opened) { return; }
         if (doc.hidden) { scheduleAutoOpen(3000); return; } // wait until they are looking at the page
@@ -854,6 +865,8 @@
           autoOn = true;
           autoTimer = setTimeout(startAutoScroll, 4100 + AUTO_SCROLL_DELAY); // 4100 = length of the opening animation
         }
+        armMusicOnFirstTap();
+        openGate();
         openGate();
       }
       function scheduleAutoOpen(ms) {
