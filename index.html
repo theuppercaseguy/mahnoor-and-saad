@@ -120,7 +120,7 @@
         <p class="hero__venue">Mariano Open Amphitheatre · Islamabad</p>
       </div>
     </div>
-    <div class="cue st st9" aria-hidden="true"><span class="cue__dot"></span></div>
+    <div class="cue st st9" aria-hidden="true"><span class="cue__hint">Scroll down</span><span class="cue__dot"></span></div>
   </header>
 
   <section class="verse land reveal" aria-labelledby="verse-tr">
@@ -293,7 +293,7 @@
         </svg>
         <p class="attire__line">Pastel shades, rose gold preferred</p>
         <ul class="swatches">
-          <li class="swatch swatch--preferred"><span class="kicker swatch__tag">Preferred</span><span class="swatch__dot sw-rose-gold"></span><span class="swatch__name">Rose Gold</span></li><li class="swatch"><span class="swatch__dot sw-blush"></span><span class="swatch__name">Blush</span></li><li class="swatch"><span class="swatch__dot sw-peach"></span><span class="swatch__name">Peach</span></li><li class="swatch"><span class="swatch__dot sw-mint"></span><span class="swatch__name">Mint</span></li><li class="swatch"><span class="swatch__dot sw-lilac"></span><span class="swatch__name">Lilac</span></li>
+          <li class="swatch swatch--preferred"><span class="kicker swatch__tag">Preferred</span><span class="swatch__dot sw-rose-gold"></span><span class="swatch__name">Rose Gold</span></li><li class="swatch"><span class="swatch__dot sw-gold"></span><span class="swatch__name">Gold</span></li><li class="swatch"><span class="swatch__dot sw-blush"></span><span class="swatch__name">Blush</span></li><li class="swatch"><span class="swatch__dot sw-peach"></span><span class="swatch__name">Peach</span></li><li class="swatch"><span class="swatch__dot sw-lilac"></span><span class="swatch__name">Lilac</span></li>
         </ul>
       </div>
       <div class="attire__col d3">
@@ -366,27 +366,15 @@
     </div>
   </section>
 
-  <!-- REPLACE: groom's number in 3 places and bride's number in 3 places -->
+  <!-- REPLACE: put the real phone number in all three places -->
   <section class="assist land reveal" aria-labelledby="assist-label">
-    <h2 class="kicker assist__label d1" id="assist-label">For directions or assistance</h2>
-    <div class="assist__pair">
-      <div class="assist__contact d2">
-        <h3 class="kicker assist__family">Groom’s Family</h3>
-        <p class="assist__number">+92 300 1234567</p>
-        <p class="assist__actions">
-          <a class="btn" href="tel:+923001234567">Call</a>
-          <a class="btn" href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a>
-        </p>
-      </div>
-      <div class="assist__contact d3">
-        <h3 class="kicker assist__family">Bride’s Family</h3>
-        <p class="assist__number">+92 300 7654321</p>
-        <p class="assist__actions">
-          <a class="btn" href="tel:+923007654321">Call</a>
-          <a class="btn" href="https://wa.me/923007654321" target="_blank" rel="noopener">WhatsApp</a>
-        </p>
-      </div>
-    </div>
+    <h2 class="kicker assist__label d1" id="assist-label">Need any help?</h2>
+    <p class="assist__note d2">For directions, or anything at all on the day, please call or message us.</p>
+    <p class="assist__number d3">+92 300 1234567</p>
+    <p class="assist__actions d3">
+      <a class="btn" href="tel:+923001234567">Call</a>
+      <a class="btn" href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp</a>
+    </p>
   </section>
 
 </main>
@@ -418,16 +406,16 @@ The Shahzad & Rafiullah Families</p>
      (capitals, spaces, dots and hyphens in the link don't matter).
      ============================================================================ */
   var GUESTS = [
+    // Groom's side
     'Abdur Rehman',
-    'Chachi',
+    'Nasreen',
     'Uzma',
     'Faizan',
     'Waris',
     'Umair',
     'Abdul Wahab',
+    'Mrs. Abdul Wahab',
     'Imran',
-    'Inam',
-    'Karishma',
     'Atif Shehzad',
     'Asif Ali',
     'Atif Malik',
@@ -449,32 +437,32 @@ The Shahzad & Rafiullah Families</p>
     'Mrs. Shaukat Ali',
     'Muqadas Ali',
     'Sami Ullah Kundi',
-    'Aamir Mamu',
-    'Nabeela Mami',
-    'Jarrar',
-    'Ammar',
-    'Manahil',
-    'Nanu',
-    'Romana Mami',
-    'Warda',
-    'Aaryan',
-    'Muhammad',
-    'Dad',
-    'Mum',
-    'Ayesha',
-    'Rida',
-    'Saad',
-    'Ammad',
+    'Aamir Kundi',
+    'Nabeela Kundi',
+    'Jarrar Kundi',
+    'Ammar Kundi',
+    'Manahil Kundi',
+    'Abdul Khaliq Kundi',
+    'Waseem Kundi',
+    'Romana Kundi',
+    'Warda Kundi',
+    'Aaryan Kundi',
+    'Muhammad Kundi',
+    'Jabran Kundi',
+    'Faleeza Awan',
+    'Ammar Naeem',
+    'Mrs. Ammar Naeem',
+    'M. Saqlain',
     'Muazam Ali',
     'Farwa',
     'Roshaan',
     'Mrs. Roshaan',
     'Afraaz',
     'Hira',
-    'Sheraz',
+    'M. Sheraz',
+    'Obaid Afridi',
     'Yousuf',
-    'Ghani',
-    'Saim',
+    'M. Ghani',
     'Asher',
     'Bilal',
     'Bobby',
@@ -488,14 +476,43 @@ The Shahzad & Rafiullah Families</p>
     'Musa',
     'Zaeem',
     'Usman',
-    'Fatima',
-    'Laraib',
-    'Hafsa',
-    'Aiman',
+    // Bride's side
+    'Dado',
+    'Nano',
+    'Babar Naseem Khan',
+    'Nouman Khan',
+    'Amir Habib',
+    'Saleem Khattak',
+    'Aqeel Mughal & Family',
+    'Adil Hashmi & Family',
+    'Faisal Hashmi & Family',
+    'Dr. Liaquat Ullah Iqbal & Family',
+    'Mr. & Mrs. Umer Khan',
+    'Aimen Khan',
+    'Khadija Khan',
+    'Mr. & Mrs. Syed Turab Shah',
+    'Sajjad Hashmi & Family',
+    'Wahab Hashmi & Family',
+    'Mr. & Mrs. Abdul Nasir Khan',
+    'Umair Abbas',
+    'Yasmeen Saleem',
+    'Bilal Malik',
+    'Ahmed Bin Fakhar',
+    'Iqra',
+    'Hafsa Anis',
+    'Ammara',
+    'Laraib Ansar',
+    'Fatima Chaudhry',
+    'Hajira Malik',
+    'Hira Moubin',
+    'Aiman Jamil',
     'Saliha',
-    'Alishba',
-    'Amber',
-    'Hajra',
+    'Alishba Javed',
+    'Huma Akmal',
+    'Atrooba Fakhar',
+    'Munizza Mehreen',
+    'Umber',
+    'Talha Hashmi',
   ];
 
   var doc = document;
