@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Send invitations</title>
+<!--
+  SENDER PAGE (private helper, not part of the invitation).
+  Upload next to index.html. Open it on your phone: https://theuppercaseguy.github.io/mahnoor-and-saad/send.html
+  Names come from guests.txt (same file the invitation uses). Add/remove a guest there and this page follows.
+  Side comes from the headings in guests.txt: a "#" line containing "groom" or "bride".
+  Edit the WORDING / SETTINGS block below to change the message.
+-->
+<style>
+  :root {
+    --ink: #17261f; --muted: #5d6b63; --paper: #f6f2e8; --card: #fffdf8; --line: #e1dacb;
+    --green: #1f5c45; --green-dark: #174735; --wa: #1faa59; --gold: #b08a3e; --sent: #e8f1ea;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  header {
+    position: sticky; top: 0; z-index: 5; background: var(--green); color: #fff;
+    padding: calc(10px + env(safe-area-inset-top, 0)) 14px 10px;
+  }
+  header h1 { margin: 0; font-size: 18px; font-weight: 600; }
+  .count { font-size: 13px; opacity: .9; margin-top: 2px; }
+  .bar { height: 5px; background: rgba(255,255,255,.25); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: #d9c58f; transition: width .3s; }
+  .tools { padding: 10px 14px 4px; }
+  #q {
+    width: 100%; font-size: 16px; padding: 11px 12px; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--card); color: var(--ink);
+  }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .chip {
+    font: inherit; font-size: 14px; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  }
+  .chip.on { background: var(--green); border-color: var(--green); color: #fff; }
+  ul { list-style: none; margin: 0; padding: 8px 14px 40px; }
+  li {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 12px; margin-bottom: 8px;
+  }
+  li.sent { background: var(--sent); }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .who { min-width: 0; }
+  .nm { font-weight: 600; word-break: break-word; }
+  .meta { font-size: 13px; color: var(--muted); }
+  .tick { color: var(--green); font-weight: 600; }
+  a.send {
+    flex: none; text-decoration: none; background: var(--wa); color: #fff; font-weight: 600;
+    padding: 11px 18px; border-radius: 10px; min-width: 84px; text-align: center;
+  }
+  li.sent a.send { background: var(--green); }
+  .row2 { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .sm {
+    font: inherit; font-size: 13px; padding: 6px 10px; border-radius: 8px;
+    border: 1px solid var(--line); background: #fff; color: var(--ink);
+  }
+  .msg { padding: 14px; color: var(--muted); }
+  .msg b { color: var(--ink); }
+  .hide { display: none; }
+  #toast {
+    position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0)); transform: translateX(-50%);
+    background: var(--ink); color: #fff; padding: 9px 16px; border-radius: 999px; font-size: 14px;
+    opacity: 0; pointer-events: none; transition: opacity .2s; max-width: 90%;
+  }
+  #toast.on { opacity: 1; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Send invitations</h1>
+  <div class="count" id="count">Loading guest list…</div>
+  <div class="bar"><i id="fill"></i></div>
+</header>
+
+<div class="tools">
+  <input id="q" type="search" placeholder="Search a guest" autocomplete="off" aria-label="Search a guest">
+  <div class="chips" id="chips">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="groom">Groom side</button>
+    <button class="chip" data-f="bride">Bride side</button>
+    <button class="chip" data-f="todo">Not sent</button>
+    <button class="chip" data-f="done">Sent</button>
+  </div>
+</div>
+
+<div class="msg hide" id="err">
+  <b>The guest list could not be loaded.</b><br>
+  Open this page from the website address (not as a downloaded file), and make sure <b>guests.txt</b> is in the same folder.
+  Or choose the file by hand:<br><br>
+  <input type="file" id="file" accept=".txt,text/plain">
+</div>
+
+<ul id="list"></ul>
+<div id="toast"></div>
+
+<script>
+(function () {
+  // ===== SETTINGS =====
+  var SITE = 'https://theuppercaseguy.github.io/mahnoor-and-saad/';
+  var COUNTRY_CODE = '92'; // used to turn 0300... into 92300...
+
+  // ===== WORDING (same as the Excel tracker). {NAME} and {LINK} are filled per guest. *text* = bold in WhatsApp =====
+  var COMMON_TOP =
+    'Assalam-o-Alaikum *{NAME}*,\n\n' +
+    'With the blessings of Allah, we joyfully invite you to the Nikkah & Engagement of\n' +
+    'Mahnoor & Saad\n\n' +
+    'Sunday, 29 November 2026, from 3:30 PM\n' +
+    'Mariano Open Amphitheatre, Bahria Golf City, Islamabad\n\n' +
+    'Your personal invitation (tap the seal to open it):\n' +
+    '{LINK}\n\n' +
+    'Your presence and prayers would mean the world to us.\n';
+  var GROOM_END =
+    'From *Mr & Mrs Rafiullah khan*.\n' +
+    'Rafiullah khan : *03339147214*\n' +
+    'Saad Khan       : *03109732360*';
+  var BRIDE_END =
+    'From *Mr & Mrs Shahzad Hashmi*.\n' +
+    'Contact #:  *0345 3510047*';
+  // ====================================================
+
+  var guests = [];
+  var filter = 'all';
+  var term = '';
+  var listEl = document.getElementById('list');
+
+  function store(key, val) {
+    try { if (val === null) { localStorage.removeItem(key); } else { localStorage.setItem(key, val); } } catch (e) {}
+  }
+  function load(key) {
+    try { return localStorage.getItem(key) || ''; } catch (e) { return ''; }
+  }
+  function slug(name) {
+    return String(name).toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function buildMessage(g) {
+    var text = (COMMON_TOP + (g.side === 'bride' ? BRIDE_END : GROOM_END));
+    return text.replace('{NAME}', g.name).replace('{LINK}', g.link);
+  }
+  function cleanPhone(raw) {
+    var d = String(raw).replace(/[^0-9]/g, '');
+    if (!d) { return ''; }
+    if (d.indexOf('00') === 0) { d = d.slice(2); }
+    else if (d.charAt(0) === '0') { d = COUNTRY_CODE + d.slice(1); }
+    else if (d.length === 10 && d.charAt(0) === '3') { d = COUNTRY_CODE + d; }
+    return d;
+  }
+  function waLink(g) {
+    var p = load('wa_phone_' + g.key);
+    return 'https://wa.me/' + p + '?text=' + encodeURIComponent(buildMessage(g));
+  }
+
+  function parse(text) {
+    var lines = String(text).replace(/^\uFEFF/, '').split(/\r\n|\r|\n/);
+    var side = 'groom', out = [], seen = {};
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].replace(/^\s+|\s+$/g, '');
+      if (!line) { continue; }
+      if (line.charAt(0) === '#') {
+        var low = line.toLowerCase();
+        if (low.indexOf('bride') > -1) { side = 'bride'; }
+        else if (low.indexOf('groom') > -1) { side = 'groom'; }
+        continue;
+      }
+      var key = slug(line);
+      if (seen[key]) { continue; }
+      seen[key] = 1;
+      out.push({ name: line, side: side, key: key, link: SITE + '?to=' + key });
+    }
+    return out;
+  }
+
+  function toast(t) {
+    var el = document.getElementById('toast');
+    el.textContent = t; el.className = 'on';
+    clearTimeout(toast.t);
+    toast.t = setTimeout(function () { el.className = ''; }, 1800);
+  }
+  function copyText(text, done) {
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;font-size:16px';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      try { ta.setSelectionRange(0, text.length); } catch (e) {}
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta); done(ok);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, fallback);
+    } else { fallback(); }
+  }
+
+  function isSent(g) { return !!load('wa_sent_' + g.key); }
+
+  function updateCount() {
+    var n = 0;
+    for (var i = 0; i < guests.length; i++) { if (isSent(guests[i])) { n++; } }
+    document.getElementById('count').textContent = n + ' of ' + guests.length + ' sent';
+    document.getElementById('fill').style.width = (guests.length ? (n * 100 / guests.length) : 0) + '%';
+  }
+
+  function render() {
+    var q = term.toLowerCase(), html = [], shown = 0;
+    listEl.innerHTML = '';
+    for (var i = 0; i < guests.length; i++) {
+      var g = guests[i], sent = isSent(g);
+      if (filter === 'groom' && g.side !== 'groom') { continue; }
+      if (filter === 'bride' && g.side !== 'bride') { continue; }
+      if (filter === 'todo' && sent) { continue; }
+      if (filter === 'done' && !sent) { continue; }
+      if (q && g.name.toLowerCase().indexOf(q) < 0) { continue; }
+      shown++;
+      var li = document.createElement('li');
+      li.className = sent ? 'sent' : '';
+      li.setAttribute('data-i', i);
+      var phone = load('wa_phone_' + g.key);
+      var meta = (g.side === 'bride' ? 'Bride side' : 'Groom side') +
+        (phone ? ' \u00b7 +' + phone : '') + (sent ? ' \u00b7 <span class="tick">\u2713 Sent</span>' : '');
+      li.innerHTML =
+        '<div class="top"><div class="who"><div class="nm"></div><div class="meta">' + meta + '</div></div>' +
+        '<a class="send" target="_blank" rel="noopener">' + (sent ? 'Resend' : 'Send') + '</a></div>' +
+        '<div class="row2">' +
+        '<button class="sm" data-a="copy">Copy</button>' +
+        '<button class="sm" data-a="num">' + (phone ? 'Change number' : 'Add number') + '</button>' +
+        '<button class="sm" data-a="mark">' + (sent ? 'Mark not sent' : 'Mark sent') + '</button></div>';
+      li.querySelector('.nm').textContent = g.name;
+      li.querySelector('a.send').href = waLink(g);
+      listEl.appendChild(li);
+    }
+    if (!shown) {
+      var m = document.createElement('li');
+      m.textContent = guests.length ? 'No guests match.' : 'The guest list is empty.';
+      listEl.appendChild(m);
+    }
+    updateCount();
+  }
+
+  listEl.addEventListener('click', function (e) {
+    var t = e.target, li = t.closest ? t.closest('li') : null;
+    if (!li || li.getAttribute('data-i') === null) { return; }
+    var g = guests[+li.getAttribute('data-i')];
+    if (t.className === 'send') {
+      // let the link open WhatsApp; mark as sent right after
+      setTimeout(function () { store('wa_sent_' + g.key, String(new Date().getTime())); render(); }, 400);
+      return;
+    }
+    var a = t.getAttribute && t.getAttribute('data-a');
+    if (a === 'copy') {
+      copyText(buildMessage(g), function (ok) { toast(ok ? 'Message copied' : 'Copy failed'); });
+    } else if (a === 'num') {
+      var cur = load('wa_phone_' + g.key);
+      var v = window.prompt('WhatsApp number for ' + g.name + '\n(e.g. 0300 1234567; leave empty to remove)', cur ? '+' + cur : '');
+      if (v === null) { return; }
+      store('wa_phone_' + g.key, cleanPhone(v) || null);
+      render();
+    } else if (a === 'mark') {
+      if (isSent(g)) { store('wa_sent_' + g.key, null); } else { store('wa_sent_' + g.key, String(new Date().getTime())); }
+      render();
+    }
+  });
+
+  document.getElementById('q').addEventListener('input', function () { term = this.value; render(); });
+  document.getElementById('chips').addEventListener('click', function (e) {
+    var f = e.target.getAttribute && e.target.getAttribute('data-f');
+    if (!f) { return; }
+    filter = f;
+    var cs = this.querySelectorAll('.chip');
+    for (var i = 0; i < cs.length; i++) { cs[i].className = 'chip' + (cs[i] === e.target ? ' on' : ''); }
+    render();
+  });
+
+  function ready(text) {
+    guests = parse(text);
+    document.getElementById('err').className = 'msg hide';
+    render();
+  }
+  function failed() {
+    document.getElementById('count').textContent = 'Guest list not loaded';
+    document.getElementById('err').className = 'msg';
+  }
+  document.getElementById('file').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f || !window.FileReader) { return; }
+    var r = new FileReader();
+    r.onload = function () { ready(String(r.result)); };
+    r.readAsText(f);
+  });
+
+  var req = new XMLHttpRequest();
+  req.open('GET', 'guests.txt?v=' + new Date().getTime(), true);
+  req.onreadystatechange = function () {
+    if (req.readyState !== 4) { return; }
+    if (req.status === 200 || (req.status === 0 && req.responseText)) { ready(req.responseText); } else { failed(); }
+  };
+  try { req.send(); } catch (e) { failed(); }
+})();
+</script>
+</body>
+</html>
