@@ -59,7 +59,7 @@ Mrs. Roshaan
 Afraaz
 Hira
 M. Sheraz
-Obaid Afridi
+Ubaid Afridi
 Yousuf
 M. Ghani
 Asher
@@ -85,6 +85,7 @@ Tehreem Shoaib
 Aqsa Gull
 Maha Hassan
 Qaizer Khan
+Saingeen Khan
 All Officers SP3
 
 
